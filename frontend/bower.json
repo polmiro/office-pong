@@ -1,0 +1,34 @@
+{
+  "name": "office-pong",
+  "version": "0.0.0",
+  "homepage": "https://github.com/polmiro/office-pong",
+  "authors": [
+    "Pol Miro <polmiro@gmail.com>"
+  ],
+  "license": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "quri/bootstrap-sass#master",
+    "history.js": "1.8.0",
+    "jsuri": "1.2.2",
+    "lodash": "2.4.1",
+    "moment": "latest",
+    "react": "~0.10.0",
+    "react-bootstrap-bower": "quri/react-bootstrap-bower#master",
+    "store.js": "1.0",
+    "superagent": "0.17.0",
+    "components-font-awesome": "~4.0.3",
+    "react-async": "~0.9.1",
+    "jquery": "~2.1.1"
+  },
+  "devDependencies": {
+    "rosie": "*"
+  }
+}

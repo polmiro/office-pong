@@ -1,0 +1,8 @@
+backend/log
+backend/neo4j
+backend/tmp
+frontend/node_modules
+frontend/bower_components
+frontend/compiled
+frontend/.sass-cache
+frontend/local
