@@ -9,6 +9,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-compass");
   grunt.loadNpmTasks("grunt-replace");
   grunt.loadNpmTasks("grunt-react");
+  grunt.loadNpmTasks("grunt-newer");
+
+  modRewrite = require("connect-modrewrite");
 
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
@@ -120,7 +123,14 @@ module.exports = function(grunt) {
         options: {
           base: ["local"],
           keepalive: true,
-          debug: true
+          debug: true,
+          middleware: function(connect, options, middlewares) {
+            middlewares.push(modRewrite(['^[^\\.]*$ /index.html [L]']));
+            options.base.forEach(function(base) {
+              middlewares.push(connect.static(base));
+            });
+            return middlewares;
+          }
         }
       }
     },
