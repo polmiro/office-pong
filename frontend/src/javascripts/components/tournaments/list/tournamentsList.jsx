@@ -18,7 +18,7 @@ var TournamentsList = React.createClass({
 
   renderTournaments: function() {
     return $.map(this.state.tournaments, function(tournament, index) {
-      return <Tournament key={index} model={tournament} />
+      return <Tournament key={index} tournament={tournament} />
     });
   },
   render: function() {

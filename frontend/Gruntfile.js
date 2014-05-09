@@ -136,6 +136,11 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      sass: {
+       files: ["src/stylesheets/**/*.sass"],
+        tasks: ["compass:local", "replace:local"],
+        options: { interrupt: true }
+      },
       jsx: {
         files: ["src/javascripts/**/*.js"],
         tasks: ["uglify:local", "replace:local"],

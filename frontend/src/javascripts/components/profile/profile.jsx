@@ -6,13 +6,13 @@ var Profile = React.createClass({
   },
 
   getInitialState: function() {
-    return { model: {} };
+    return { player: {} };
   },
 
   componentWillMount: function() {
     services.players.loadPlayer(this.props.id, {
       success: function (response) {
-        this.setState({ model: response });
+        this.setState({ player: response });
       }.bind(this),
       error: function() {
         alert("oops;");
@@ -23,7 +23,7 @@ var Profile = React.createClass({
   render: function() {
     return (
       <div>
-        Hello {this.state.model.name}!
+        Hello {this.state.player.name}!
       </div>
     );
   }

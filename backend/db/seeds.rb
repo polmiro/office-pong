@@ -52,4 +52,3 @@ Player.all.to_a.each do |player|
 end
 
 GenerateBrackets.run!(:tournament => tournament)
-

@@ -8,6 +8,7 @@ window.OverlayTrigger  = ReactBootstrap.OverlayTrigger;
 window.Modal  = ReactBootstrap.Modal;
 window.Popover  = ReactBootstrap.Popover;
 window.Jumbotron  = ReactBootstrap.Jumbotron;
+window.Label  = ReactBootstrap.Label;
 
 window.routeHelper = new RouteHelper();
 

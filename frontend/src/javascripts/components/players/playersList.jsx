@@ -18,7 +18,7 @@ var PlayersList = React.createClass({
 
   renderPlayers: function() {
     return $.map(this.state.players, function(player, index) {
-      return <Player key={index} model={player} />
+      return <Player key={index} player={player} />
     });
   },
   render: function() {

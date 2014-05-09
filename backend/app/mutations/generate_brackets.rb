@@ -28,12 +28,12 @@ class GenerateBrackets < Mutations::Command
       middle = (players.size.to_f / 2).ceil
       halfs = players.in_groups_of(middle, false)
 
-      Bracket.create(round: round).tap do |bracket|
+      Bracket.create.tap do |bracket|
         bracket.left_bracket = generateTree(halfs[0], round + 1)
         bracket.right_bracket = generateTree(halfs[1], round + 1)
       end
     else
-      Bracket.create(round: round).tap do |bracket|
+      Bracket.create.tap do |bracket|
         if players.size == 1
           bracket.winner = players[0]
         else

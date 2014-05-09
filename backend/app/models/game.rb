@@ -1,7 +1,6 @@
 class Game
   include Neo4j::ActiveNode
 
-  property :over,           :type => Boolean,  :default => false
   property :created_at,     :type => DateTime
   property :updated_at,     :type => DateTime
 
