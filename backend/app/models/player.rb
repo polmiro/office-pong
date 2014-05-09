@@ -13,7 +13,7 @@ class Player
   index :name
   index :email
 
-  has_n(:pairings).to(Pairing)
+  has_n(:pairings).from(Pairing, :players)
   has_n(:won_games).from(Game, :winner)
   has_n(:lost_games).from(Game, :loser)
   has_one(:department).from(Department, :employees)
