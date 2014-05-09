@@ -6,7 +6,7 @@ RouteHelper = (function() {
     "/": "root",
     "/players": "players",
     "/tournaments": "tournaments",
-    "/me": "me"
+    "/me": "profile"
   };
 
   function RouteHelper() {

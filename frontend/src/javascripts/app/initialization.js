@@ -3,13 +3,16 @@ window.Location = ReactRouter.Location;
 window.Link = ReactRouter.Link;
 window.NotFound = ReactRouter.NotFound;
 
+window.Button  = ReactBootstrap.Button;
 window.OverlayTrigger  = ReactBootstrap.OverlayTrigger;
 window.Modal  = ReactBootstrap.Modal;
 window.Popover  = ReactBootstrap.Popover;
+window.Jumbotron  = ReactBootstrap.Jumbotron;
 
 window.routeHelper = new RouteHelper();
 
 window.services = {
-  players: new PlayersService()
+  players: new PlayersService(),
+  tournaments: new TournamentsService()
 };
 

@@ -1,8 +1,6 @@
 module Api
   module V1
     class PlayersController < Api::V1::ApplicationController
-      protect_from_forgery with: :null_session
-
       def index
         render :json => Player.all.to_a,
                :serializer => ActiveModel::ArraySerializer,
