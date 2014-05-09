@@ -29,8 +29,8 @@ class GenerateBrackets < Mutations::Command
       halfs = players.in_groups_of(middle, false)
 
       Bracket.create(matchNumber: matchNumber).tap do |bracket|
-        bracket.left_branch = generateTree(halfs[0], matchNumber + 1)
-        bracket.right_branch = generateTree(halfs[1], matchNumber + 1)
+        bracket.left_bracket = generateTree(halfs[0], matchNumber + 1)
+        bracket.right_bracket = generateTree(halfs[1], matchNumber + 1)
       end
     else
       Bracket.create(matchNumber: matchNumber).tap do |bracket|

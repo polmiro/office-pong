@@ -51,17 +51,17 @@ describe GenerateBrackets do
 
     it "generates a tree of brackets" do
       GenerateBrackets.run!(:tournament => tournament)
-      expect(tournament.bracket.left_branch.name).to eql("semifinal")
+      expect(tournament.bracket.left_bracket.name).to eql("semifinal")
     end
 
     it "adds the player as winner in the leaf brackets with one player" do
       GenerateBrackets.run!(:tournament => tournament)
-      expect(tournament.bracket.right_branch.right_branch.winner.id).to eql(loic.id)
+      expect(tournament.bracket.right_bracket.right_bracket.winner.id).to eql(loic.id)
     end
 
     it "creates a game in the leaf brackets with the correct players" do
       GenerateBrackets.run!(:tournament => tournament)
-      expect(tournament.bracket.left_branch.left_branch.game.pairing.players).to match_array([pol, beau])
+      expect(tournament.bracket.left_bracket.left_bracket.game.pairing.players).to match_array([pol, beau])
     end
   end
 

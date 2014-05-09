@@ -9,8 +9,8 @@ class Bracket
 
   validates :matchNumber, :presence => true, :numericality => { :only_integer => true }
 
-  has_one(:left_branch)
-  has_one(:right_branch)
+  has_one(:left_bracket).to(Bracket)
+  has_one(:right_bracket).to(Bracket)
   has_one(:game).to(Game)
   has_one(:winner).to(Player)
 
