@@ -8,7 +8,7 @@ var PlayersList = React.createClass({
   componentWillMount: function() {
     services.players.loadPlayers({
       success: function (response) {
-        this.setState({ players: response.data });
+        this.setState({ players: response });
       }.bind(this),
       error: function() {
         alert("oops;");
