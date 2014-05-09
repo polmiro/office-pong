@@ -5,7 +5,4 @@ Rails.application.routes.draw do
       resources :tournaments
     end
   end
-
-  root :to => "pages#index"
-  match "*path", :to => "pages#index", :via => "get"
 end
