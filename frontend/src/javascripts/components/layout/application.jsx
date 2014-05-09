@@ -8,17 +8,17 @@ var Application = React.createClass({
           <div className="col-sm-3">
             <SidebarNavigation>
               <SidebarNavigationItem
-               title="Players"
-               icon="users"
-               href={routeHelper.playersPath()}
-              />
-              <SidebarNavigationItem
                 title="Profile"
                 icon="user"
                 href={routeHelper.profilePath()}
               />
               <SidebarNavigationItem
-                title="Tournament"
+               title="Players"
+               icon="users"
+               href={routeHelper.playersPath()}
+              />
+              <SidebarNavigationItem
+                title="Tournaments"
                 icon="trophy"
                 href={routeHelper.tournamentsPath()}
               />
