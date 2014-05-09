@@ -3,11 +3,11 @@ class Bracket
 
   include Neo4j::ActiveNode
 
-  property :matchNumber,    :type => Integer
+  property :round,    :type => Integer
   property :created_at,     :type => DateTime
   property :updated_at,     :type => DateTime
 
-  validates :matchNumber, :presence => true, :numericality => { :only_integer => true }
+  validates :round, :presence => true, :numericality => { :only_integer => true }
 
   has_one(:left_bracket).to(Bracket)
   has_one(:right_bracket).to(Bracket)
@@ -15,6 +15,6 @@ class Bracket
   has_one(:winner).to(Player)
 
   def name
-    NAMES[matchNumber] || NAMES.last
+    NAMES[round] || NAMES.last
   end
 end
