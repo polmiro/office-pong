@@ -1,0 +1,2 @@
+describe GenerateBrackets do
+end

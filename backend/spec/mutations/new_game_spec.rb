@@ -1,0 +1,2 @@
+describe NewGame do
+end
