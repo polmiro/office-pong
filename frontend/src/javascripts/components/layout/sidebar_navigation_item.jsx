@@ -8,7 +8,7 @@ var SidebarNavigationItem = React.createClass({
   },
 
   active: function() {
-    window.location.pathname == this.props.href
+    return window.location.pathname == this.props.href;
   },
 
   classes: function() {

@@ -2,13 +2,29 @@
 
 var TournamentDetail = React.createClass({
   propTypes: {
-    model: React.PropTypes.object.isRequired
+    id: React.PropTypes.string.isRequired
   },
+
+  getInitialState: function() {
+    return { model: {} };
+  },
+
+  componentWillMount: function() {
+    services.tournaments.loadTournament(this.props.id, {
+      success: function (response) {
+        this.setState({ model: response });
+      }.bind(this),
+      error: function() {
+        alert("oops;");
+      }.bind(this)
+    });
+  },
+
 
   render: function() {
     return (
       <div>
-        This is the Tournament
+        {this.state.model.title}
       </div>
     );
   }

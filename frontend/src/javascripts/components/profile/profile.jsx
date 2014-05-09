@@ -1,14 +1,18 @@
 /** @jsx React.DOM */
 
 var Profile = React.createClass({
+  propTypes: {
+    id: React.PropTypes.string.isRequired
+  },
+
   getInitialState: function() {
-    return { player: {} }
+    return { model: {} };
   },
 
   componentWillMount: function() {
-    services.players.loadPlayer(1, {
+    services.players.loadPlayer(this.props.id, {
       success: function (response) {
-        this.setState({ player: response.data });
+        this.setState({ model: response });
       }.bind(this),
       error: function() {
         alert("oops;");
@@ -19,7 +23,7 @@ var Profile = React.createClass({
   render: function() {
     return (
       <div>
-        Hello {this.player.name}!
+        Hello {this.state.model.name}!
       </div>
     );
   }

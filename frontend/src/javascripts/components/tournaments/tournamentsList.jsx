@@ -8,7 +8,7 @@ var TournamentsList = React.createClass({
   componentWillMount: function() {
     services.tournaments.loadTournaments({
       success: function (response) {
-        this.setState({ tournaments: response.data });
+        this.setState({ tournaments: response });
       }.bind(this),
       error: function() {
         alert("oops;");

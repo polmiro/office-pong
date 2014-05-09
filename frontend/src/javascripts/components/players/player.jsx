@@ -10,7 +10,7 @@ var Player = React.createClass({
       <Popover title={this.props.model.name}>
         <Button bsStyle="warning" block>Challenge</Button>
         <Button bsStyle="success" block>Report Game</Button>
-        <Button bsStyle="info" block>Profile</Button>
+        <Button bsStyle="info" href={routeHelper.playerPath(this.props.model.id)} block>Profile</Button>
       </Popover>
     )
   },
