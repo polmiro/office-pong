@@ -45,9 +45,10 @@ GameRule::SETS.product(GameRule::SCORE) do |combination|
 end
 
 tournament = Tournament.create!(:title => "I Quri Grand Slam")
+tournament.game_rule = GameRule.find(:sets => 3, :score => 21)
+
 Player.all.to_a.each do |player|
   tournament.players << player
-  tournament.game_rule = GameRule.find(:sets => 3, :score => 21)
 end
 
 GenerateBrackets.run!(:tournament => tournament)

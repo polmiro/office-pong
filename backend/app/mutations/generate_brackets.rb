@@ -1,19 +1,24 @@
 class GenerateBrackets < Mutations::Command
+  MIN_PLAYERS = 3
+
   required do
     model :tournament
   end
 
+  optional do
+    boolean :shuffle
+  end
+
   def validate
-    if tournament.players.count > 32
-      add_error(:tournament, :invalid, "Too many players for this tournament")
-    elsif tournament.players.count < 3
+    if tournament.players.count < MIN_PLAYERS
       add_error(:tournament, :invalid, "Too few players for this tournament")
     end
   end
 
-
   def execute
-    tournament.bracket = generateTree(tournament.players.to_a, 1)
+    players = tournament.players.to_a
+    players.shuffle! if shuffle
+    tournament.bracket = generateTree(tournament.players.to_a, 0)
   end
 
   private
