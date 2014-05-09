@@ -27,9 +27,11 @@ var Application = React.createClass({
           <div className="col-sm-9">
             <Locations>
               <Location path="/" handler={WelcomePage} />
-              <Location path="/players" handler={PlayersList} />
               <Location path="/me" handler={Profile} />
+              <Location path="/players" handler={PlayersList} />
+              <Location path="/players/:id" handler={Profile} />
               <Location path="/tournaments" handler={TournamentsList} />
+              <Location path="/tournaments/:id" handler={TournamentDetail} />
             </Locations>
           </div>
         </div>

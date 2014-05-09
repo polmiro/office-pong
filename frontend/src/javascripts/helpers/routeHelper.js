@@ -4,9 +4,11 @@ var RouteHelper,
 RouteHelper = (function() {
   RouteHelper.prototype.routes = {
     "/": "root",
+    "/me": "profile",
     "/players": "players",
+    "/players/:id": "player",
     "/tournaments": "tournaments",
-    "/me": "profile"
+    "/tournaments/:id": "tournament",
   };
 
   function RouteHelper() {

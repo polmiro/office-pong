@@ -2,7 +2,7 @@
 
 var Player = React.createClass({
   propTypes: {
-    model: React.PropTypes.object
+    model: React.PropTypes.object.isRequired
   },
 
   renderPopover: function() {
