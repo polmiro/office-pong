@@ -8,13 +8,14 @@ module Api
       end
 
       def show
-        render :json => Player.find(params[:id])
+        render :json => Player.find(params[:id]),
+               :serializer => PlayerSerializer
       end
 
-      protected
-
-      def default_serializer_options
-        super.merge(:serializer => PlayerSerializer)
+      def stats
+        player = Player.find(params[:player_id])
+        render :json => PlayerStats.new(player),
+               :serializer => PlayerStatsSerializer
       end
     end
   end

@@ -14,6 +14,7 @@ class Player
   index :email
 
   has_n(:pairings).from(Pairing, :players)
+  has_n(:won_tournaments).from(Tournament, :winner)
   has_n(:won_games).from(Game, :winner)
   has_n(:lost_games).from(Game, :loser)
   has_one(:department).from(Department, :employees)

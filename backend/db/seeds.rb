@@ -47,7 +47,7 @@ end
 tournament = Tournament.create!(:title => "I Quri Grand Slam")
 tournament.game_rule = GameRule.find(:sets => 3, :score => 21)
 
-Player.all.to_a.each do |player|
+Player.all.to_a.first(6).each do |player|
   tournament.players << player
 end
 
