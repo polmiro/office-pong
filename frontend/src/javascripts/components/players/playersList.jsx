@@ -18,12 +18,16 @@ var PlayersList = React.createClass({
 
   renderPlayers: function() {
     return $.map(this.state.players, function(player, index) {
-      return <Player key={index} player={player} />
+      return (
+        <div className="col-sm-4">
+          <Player key={index} player={player} />
+        </div>
+      );
     });
   },
   render: function() {
     return (
-      <div>
+      <div className="row">
         {this.renderPlayers()}
       </div>
     );

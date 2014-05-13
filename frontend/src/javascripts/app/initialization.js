@@ -1,3 +1,5 @@
+window.ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 window.Locations  = ReactRouter.Locations;
 window.Location = ReactRouter.Location;
 window.Link = ReactRouter.Link;

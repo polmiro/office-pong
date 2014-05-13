@@ -3,7 +3,7 @@
 var Application = React.createClass({
   render: function() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-sm-3">
             <SidebarNavigation>

@@ -9,7 +9,10 @@ var TournamentBracketPlayer = React.createClass({
     if(this.props.player) {
       return (
         <div className="tournament-player">
-          <Button block>{this.props.player.name}</Button>
+          <div className="avatar">
+            <img src={this.props.player.avatar_url} />
+          </div>
+          <div className="name">{this.props.player.name}</div>
         </div>
       );
     }

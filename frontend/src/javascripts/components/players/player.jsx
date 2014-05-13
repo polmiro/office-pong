@@ -18,9 +18,12 @@ var Player = React.createClass({
   render: function() {
     return (
       <OverlayTrigger trigger="click" placement="bottom" overlay={this.renderPopover()}>
-        <div className="panel panel-player col-sm-2">
-          <div className="avatar">
-            <img src={this.props.player.avatar_url} className="img-responsive" />
+        <div className="panel panel-player bg-dark">
+          <div className="panel-body">
+            <div className="avatar">
+              <img src={this.props.player.avatar_url} className="img-responsive" />
+              <h2>{this.props.player.name}</h2>
+            </div>
           </div>
         </div>
       </OverlayTrigger>

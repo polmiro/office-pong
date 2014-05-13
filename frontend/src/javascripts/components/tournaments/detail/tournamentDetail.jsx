@@ -24,18 +24,20 @@ var TournamentDetail = React.createClass({
   render: function() {
     if(this.state.tournament) {
       return (
-        <Jumbotron>
-          <h1>{this.state.tournament.title}</h1>
-          <TournamentBrackets bracket={this.state.tournament.bracket} />
-          <div className="clearfix" />
-        </Jumbotron>
+        <div className="panel bg-dark">
+          <div className="panel-body">
+            <h1>{this.state.tournament.title}</h1>
+            <TournamentBrackets bracket={this.state.tournament.bracket} />
+            <div className="clearfix" />
+          </div>
+        </div>
       );
     }
     else {
       return (
-        <Jumbotron>
+        <div className="panel bg-dark">
           <h1>loading...</h1>
-        </Jumbotron>
+        </div>
       );
     }
   }

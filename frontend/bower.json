@@ -26,7 +26,8 @@
     "superagent": "0.17.0",
     "components-font-awesome": "~4.0.3",
     "react-async": "~0.9.1",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "circliful": "~0.1.5"
   },
   "devDependencies": {
     "rosie": "*"

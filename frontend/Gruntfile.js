@@ -68,7 +68,8 @@ module.exports = function(grunt) {
           fontsPath: "src/fonts",
           importPath: [
             "bower_components/bootstrap-sass/vendor/assets/stylesheets",
-            "bower_components/components-font-awesome/scss"
+            "bower_components/components-font-awesome/scss",
+            "bower_components/circliful/css"
           ],
           httpFontsDir: "local/fonts",
           generatedImagesDir: "local/images",
@@ -101,13 +102,14 @@ module.exports = function(grunt) {
             "bower_components/moment/moment.js",
             "bower_components/react-bootstrap-bower/react-bootstrap.js",
             "bower_components/jquery/dist/jquery.min.js",
+            "bower_components/circliful/js/jquery.circliful.js",
             "src/javascripts/constants/**/*.js",
             "src/javascripts/helpers/**/*.js",
             "src/javascripts/services/**/*.js",
             "src/javascripts/adapters/**/*.js",
             "src/javascripts/forms/**/*.js",
             "src/javascripts/app/*.js",
-            "compiled/javascripts/mixins/**/_mixin.js",
+            "src/javascripts/mixins/**/*.js",
             "compiled/javascripts/components/**/*.js"
           ]
         }
