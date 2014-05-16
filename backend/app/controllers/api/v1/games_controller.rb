@@ -14,8 +14,14 @@ module Api
 
       def create
         render :status => 201,
-               :json => ReportGame.run!(:report => params[:report]),
+               :json => ReportGame.run!(:report => game_params),
                :serializer => GameSerializer
+      end
+
+      private
+
+      def game_params
+        params.require(:game).permit!
       end
     end
   end

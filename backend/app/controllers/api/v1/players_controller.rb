@@ -12,9 +12,21 @@ module Api
                :serializer => PlayerSerializer
       end
 
+      def create
+        render :status => 201,
+               :json => Player.create!(player_params),
+               :serializer => PlayerSerializer
+      end
+
       def stats
         render :json => Player.find(params[:player_id]).stats,
                :serializer => PlayerStatsSerializer
+      end
+
+      private
+
+      def player_params
+        params.require(:player).permit(:name, :email)
       end
     end
   end

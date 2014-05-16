@@ -39,9 +39,9 @@ describe "/api/v1/games", :type => "request" do
   end
 
   describe "POST /games" do
-    before { post "/api/v1/games", :report => valid_report }
+    before { post "/api/v1/games", :game => valid_report }
 
-    it "returns 204 status" do
+    it "returns 201 status" do
       expect(response.status).to eql(201)
     end
 

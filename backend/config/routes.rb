@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       # resources :challenges
       resources :games, :only => [:index, :show, :create]
       resources :tournaments, :only => [:index, :show]
-      resources :players, :only => [:index, :show] do
+      resources :players, :only => [:index, :show, :create] do
         get :stats
       end
     end

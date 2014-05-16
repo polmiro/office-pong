@@ -24,4 +24,17 @@ describe "/api/v1/players", :type => "request" do
       expect(JSON.parse(response.body)).to be_present
     end
   end
+
+  describe "POST '/players'" do
+    before { post "/api/v1/players", :player => { :name => "Beau", :email => "beau@quri.com" } }
+
+    it "returns 201 status" do
+      expect(response.status).to eql(201)
+    end
+
+    it "returns json" do
+      expect(JSON.parse(response.body)).to be_present
+    end
+  end
+
 end
