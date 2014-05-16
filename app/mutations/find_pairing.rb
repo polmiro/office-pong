@@ -10,9 +10,9 @@ class FindPairing < Mutations::Command
   end
 
   def execute
-    result = Neo4j::Session.current.query <<-CYPHER
+    result = Neo4j::Session.current.query(<<-CYPHER, :id1 => id1, :id2 => id2)
       MATCH (p1:`Player`), (p2:`Player`)
-      WHERE id(p1) = #{id1} AND id(p2) = #{id2}
+      WHERE id(p1) = {id1} AND id(p2) = {id2}
       CREATE UNIQUE (p1)-[:`Pairing#players`]-(pairing:`Pairing`)-[:`Pairing#players`]-(p2)
       RETURN id(pairing) AS pairing_id
     CYPHER
@@ -23,10 +23,10 @@ class FindPairing < Mutations::Command
   private
 
   def id1
-    players[0].id
+    players[0].id.to_i
   end
 
   def id2
-    players[1].id
+    players[1].id.to_i
   end
 end
