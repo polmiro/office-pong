@@ -7,16 +7,16 @@ module Api
 
       # Order of rescue_from statements is important
 
-      # rescue_from StandardError do |e|
-      #   log_fatal_error(e)
-      #   render :status => :internal_server_error,
-      #          :json => ApiError.new(e),
-      #          :serializer => ApiErrorSerializer
-      # end
+      rescue_from StandardError do |e|
+        log_fatal_error(e)
+        render :status => 500,
+               :json => ApiError.new(e),
+               :serializer => ApiErrorSerializer
+      end
 
       rescue_from Mutations::ValidationException do |e|
         log_error(e)
-        render :status => :unprocessable_entity,
+        render :status => 422,
                :json => ApiError.new(e),
                :serializer => UnprocessableEntityErrorSerializer
       end

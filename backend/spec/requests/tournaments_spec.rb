@@ -1,17 +1,14 @@
 describe "/api/v1/tournaments", :type => "request" do
+  let!(:pol) { Player.create!(:name => "Pol", :email => "pol@quri.com") }
+  let!(:travis) { Player.create!(:name => "Travis", :email => "travis@quri.com") }
+  let!(:beau)  { Player.create!(:name => "Beau", :email => "beau@quri.com") }
+
   let!(:tournament) do
     Tournament.create!(:title => "I Quri Grand Slam").tap do|t|
+      t.players << pol << travis << beau
       t.game_rule = GameRule.create(:sets => 3, :score => 21)
+      GenerateBrackets.run!(:tournament => t)
     end
-  end
-
-  let(:tournament_json) do
-    {
-      id: tournament.id,
-      title: "I Quri Grand Slam",
-      created_at: tournament.created_at.as_json,
-      updated_at: tournament.updated_at.as_json,
-    }.with_indifferent_access
   end
 
   describe "GET '/tournaments'" do
@@ -22,7 +19,7 @@ describe "/api/v1/tournaments", :type => "request" do
     end
 
     it "returns an array of json tournaments" do
-      expect(JSON.parse(response.body)).to eql([tournament_json])
+      expect(JSON.parse(response.body)).to be_present
     end
   end
 
@@ -34,7 +31,7 @@ describe "/api/v1/tournaments", :type => "request" do
     end
 
     it "returns the tournament's json" do
-      expect(JSON.parse(response.body)).to eql(tournament_json)
+      expect(JSON.parse(response.body)).to be_present
     end
   end
 end

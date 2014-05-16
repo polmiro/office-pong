@@ -46,12 +46,12 @@ describe GenerateBrackets do
 
     it "adds the final bracket to the tournament" do
       GenerateBrackets.run!(:tournament => tournament)
-      expect(tournament.bracket.name).to eql("final")
+      expect(tournament.bracket).to be_present()
     end
 
     it "generates a tree of brackets" do
       GenerateBrackets.run!(:tournament => tournament)
-      expect(tournament.bracket.left_bracket.name).to eql("semifinal")
+      expect(tournament.bracket.left_bracket).to be_present()
     end
 
     it "adds the player as winner in the leaf brackets with one player" do

@@ -3,6 +3,12 @@ class FindPairing < Mutations::Command
     array :players
   end
 
+  def validate
+    if players.compact.size != 2
+      add_error(:players, :invalid, "Two players needed to create a game")
+    end
+  end
+
   def execute
     result = Neo4j::Session.current.query <<-CYPHER
       MATCH (p1:`Player`), (p2:`Player`)

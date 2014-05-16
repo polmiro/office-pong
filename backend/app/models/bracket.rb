@@ -1,6 +1,4 @@
 class Bracket
-  NAMES = %w(final semifinal quarterfinal eliminatory)
-
   include Neo4j::ActiveNode
 
   property :created_at,     :type => DateTime

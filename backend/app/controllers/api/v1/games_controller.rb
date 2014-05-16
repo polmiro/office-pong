@@ -13,7 +13,8 @@ module Api
       end
 
       def create
-        render :json => ReportGame.run!(:report => params[:report])
+        render :status => 201,
+               :json => ReportGame.run!(:report => params[:report]),
                :serializer => GameSerializer
       end
     end

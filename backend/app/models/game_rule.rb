@@ -16,7 +16,7 @@ class GameRule
   validates :score, :presence => true, :inclusion => { :in => SCORE }
 
   def self.rule
-    find(:sets => 3, :score => 21)
+    find(:sets => 1, :score => 21)
   end
 
   def validate_sets(x, y)
