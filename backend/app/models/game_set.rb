@@ -5,6 +5,7 @@ class GameSet
   property :updated_at,     :type => DateTime
 
   has_one(:winner).to(Player)
+  has_one(:loser).to(Player)
   has_one(:game).from(Game, :game_sets)
-  has_n(:scores)
+  has_n(:scores).to(Player)
 end

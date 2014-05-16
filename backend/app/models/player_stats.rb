@@ -6,11 +6,19 @@ class PlayerStats
   end
 
   def points_won_count
-    1500
+    Neo4j::Session.current.query(<<-CYPHER).first[:points_won]
+      MATCH (p:`Player`)<-[r:`GameSet#scores`]-()
+      WHERE id(p) = #{@player.id}
+      RETURN sum(r.value) AS points_won
+    CYPHER
   end
 
   def points_lost_count
-    2000
+    Neo4j::Session.current.query(<<-CYPHER).first[:points_lost]
+      MATCH (p:`Player`)<-[:`GameSet#scores`]-()-[r:`GameSet#scores`]->(p2:`Player`)
+      WHERE id(p) = #{@player.id} AND id(p2) <> #{@player.id}
+      RETURN sum(r.value) AS points_lost
+    CYPHER
   end
 
   def games_lost_count
@@ -26,10 +34,33 @@ class PlayerStats
   end
 
   def worst_defeat
-    Game.all.next
+    aggregate_game(:min)
   end
 
   def greatest_victory
-    Game.all.next
+    aggregate_game(:max)
   end
+
+  private
+
+  def aggregate_game(agg)
+    result = Neo4j::Session.current.query(<<-CYPHER)
+      MATCH (player:`Player`)<-[:`Pairing#players`]-(pairing:`Pairing`),
+            (pairing)-[:`Game#pairing`]-(game:`Game`),
+            (game)-[:`Game#game_sets`]-(game_set),
+            (game_set)-[player_score:`GameSet#scores`]-(player),
+            (game_set)-[rival_score:`GameSet#scores`]-(rival)
+      WHERE id(player) = #{@player.id} AND id(rival) <> #{@player.id}
+      WITH id(game) AS game_id, sum(player_score.value - rival_score.value) AS diff
+      WHERE diff #{agg == :min ? "<" : ">"} 0
+      RETURN game_id AS game_id, #{agg}(diff) AS diff
+    CYPHER
+
+    if result.first
+      Neo4j::Node.load result.first[:game_id]
+    else
+      nil
+    end
+  end
+
 end

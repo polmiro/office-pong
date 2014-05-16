@@ -13,8 +13,7 @@ module Api
       end
 
       def stats
-        player = Player.find(params[:player_id])
-        render :json => PlayerStats.new(player),
+        render :json => Player.find(params[:player_id]).stats,
                :serializer => PlayerStatsSerializer
       end
     end

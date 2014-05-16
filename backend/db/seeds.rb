@@ -52,3 +52,8 @@ Player.all.to_a.first(6).each do |player|
 end
 
 GenerateBrackets.run!(:tournament => tournament)
+
+report = { :report => {} }
+report[:report][pol.id] = [21,21,5]
+report[:report][beau.id] = [9,9,21]
+ReportGame.run!(report)

@@ -8,5 +8,5 @@ class Game
   has_one(:winner).to(Player)
   has_one(:loser).to(Player)
   has_one(:game_rule).to(GameRule)
-  has_n(:game_sets).to(Player)
+  has_n(:game_sets).to(GameSet)
 end

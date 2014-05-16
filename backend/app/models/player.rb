@@ -13,11 +13,16 @@ class Player
   index :name
   index :email
 
+  has_n(:games).from(Pairing, :games)
   has_n(:pairings).from(Pairing, :players)
   has_n(:won_tournaments).from(Tournament, :winner)
   has_n(:won_games).from(Game, :winner)
   has_n(:lost_games).from(Game, :loser)
   has_one(:department).from(Department, :employees)
+
+  def stats
+    @stats ||= PlayerStats.new(self)
+  end
 
   def avatar_url
     hash = Digest::MD5.hexdigest(email.downcase)

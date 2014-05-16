@@ -15,6 +15,16 @@ class GameRule
   validates :sets,  :presence => true, :inclusion => { :in => SETS }
   validates :score, :presence => true, :inclusion => { :in => SCORE }
 
+  def self.rule
+    find(:sets => 3, :score => 21)
+  end
+
+  def validate_sets(x, y)
+    if SETS.include?(x.size) && SETS.include?(y.size) && x.size == y.size
+      x.each_with_index.all?{|_, i| validate_score(x[i], y[i]) }
+    end
+  end
+
   def validate_score(x, y)
     x, y = y, x if x < y
     x > score && y == x - 2 || x == score && y <= x - 2
