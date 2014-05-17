@@ -77,6 +77,4 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  config.neo4j.session_path = ENV["GRAPHENEDB_URL"]
 end
