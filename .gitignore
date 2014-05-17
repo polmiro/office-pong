@@ -1,3 +1,4 @@
 log/
 neo4j-db/
 tmp/
+.neo4j/
